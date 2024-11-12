@@ -50,5 +50,3 @@ export default class HolbertonCourse {
     return this._students;
   }
 }
-
-new HolbertonCourse(12, '30', ['John', 'Jane', 'Jim']);
