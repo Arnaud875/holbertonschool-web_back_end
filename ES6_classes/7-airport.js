@@ -26,7 +26,11 @@ export default class Airport {
     this._code = newCode;
   }
 
-  get [Symbol.toStringTag]() {
-    return this._code;
+  toString() {
+    return `[object ${this._code}]`;
   }
 }
+
+const airportSF = new Airport('San Francisco Airport', 'SFO');
+console.log(airportSF);
+console.log(airportSF.toString());
