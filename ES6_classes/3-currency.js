@@ -8,12 +8,12 @@ export default class Currency {
     return this._code;
   }
 
-  get name() {
-    return this._name;
-  }
-
   set code(newCode) {
     this._code = newCode;
+  }
+
+  get name() {
+    return this._name;
   }
 
   set name(newName) {
