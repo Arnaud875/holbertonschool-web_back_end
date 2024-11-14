@@ -1,4 +1,5 @@
-import Currency from './3-currency';
+/* eslint import/extensions: "off" */
+import Currency from './3-currency.js'; // eslint-disable-line no-unused-vars
 
 export default class Pricing {
   constructor(amount, currency) {
@@ -10,26 +11,20 @@ export default class Pricing {
     return this._amount;
   }
 
+  set amount(value) {
+    this._amount = value;
+  }
+
   get currency() {
     return this._currency;
   }
 
-  set amount(newAmount) {
-    if (typeof newAmount !== 'number') {
-      throw new TypeError('Amount must be a number');
-    }
-    this._amount = newAmount;
-  }
-
-  set currency(newCurrency) {
-    if (!(newCurrency instanceof Currency)) {
-      throw new TypeError('Currency must be a Currency');
-    }
-    this._currency = newCurrency;
+  set currency(value) {
+    this._currency = value;
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+    return `${this._amount} ${this._currency._name} (${this._currency._code})`;
   }
 
   static convertPrice(amount, conversionRate) {
