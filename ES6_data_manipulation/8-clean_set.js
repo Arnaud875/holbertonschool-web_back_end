@@ -1,8 +1,10 @@
-export default function cleanSet(setObj, startString) {
-  const substrings = [];
+export default function cleanSet(set, startString) {
+  if (!set || !startString || typeof startString !== 'string' || startString === '') return '';
 
-  setObj.forEach((value) => {
-    if (typeof value === 'string' && startString !== '' && value.startsWith(startString)) substrings.push(value.replace(startString, ''));
-  });
-  return substrings.join('-');
+  return Array.from(set)
+    .filter((value) => typeof value === 'string'
+      && value.startsWith(startString))
+    .map((value) => value.slice(startString.length))
+    .filter((value) => value.length > 0)
+    .join('-');
 }
