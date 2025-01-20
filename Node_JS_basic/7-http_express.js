@@ -4,7 +4,7 @@ const { existsSync, readFileSync } = require('fs');
 const app = express();
 
 function readCSV(filePath) {
-  if (!existsSync(filePath)) throw new Error('Cannot load the database');
+  if (!existsSync(filePath)) return [0, [], []];
 
   let data = readFileSync(filePath, { encoding: 'utf-8' });
   data = data.split('\n').map((line) => line.split(','));
@@ -34,7 +34,9 @@ function readCSV(filePath) {
   return [size, CSStr, SWEStr];
 }
 
-const cacheData = readCSV(process.argv[2]);
+let cacheData = null;
+if (process.argv.length >= 3) cacheData = readCSV(process.argv[2]);
+else { cacheData = readCSV(''); }
 
 app.get('/students', (req, res) => {
   let formatStr = 'This is the list of our students\n';

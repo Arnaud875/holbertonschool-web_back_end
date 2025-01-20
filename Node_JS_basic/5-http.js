@@ -2,7 +2,7 @@ const http = require('http');
 const { existsSync, readFileSync } = require('fs');
 
 function readCSV(filePath) {
-  if (!existsSync(filePath)) throw new Error('Cannot load the database');
+  if (!existsSync(filePath)) return [0, [], []];
 
   let data = readFileSync(filePath, { encoding: 'utf-8' });
   data = data.split('\n').map((line) => line.split(','));
@@ -32,7 +32,10 @@ function readCSV(filePath) {
   return [size, CSStr, SWEStr];
 }
 
-const cacheData = readCSV(process.argv[2]);
+let cacheData;
+if (process.argv.length >= 3) cacheData = readCSV(process.argv[2]);
+else { cacheData = readCSV(''); }
+
 const app = http.createServer((req, res) => {
   res.writeHead(200);
 
