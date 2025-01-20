@@ -43,7 +43,7 @@ const app = http.createServer((req, res) => {
     let formatStr = 'This is the list of our students\n';
     formatStr += `Number of students: ${cacheData[0]}\n`;
     formatStr += `Number of students in CS: ${cacheData[1].length}. List: ${cacheData[1].join(', ')}\n`;
-    formatStr += `Number of students in SWE: ${cacheData[2].length}. List: ${cacheData[2].join(', ')}\n`;
+    formatStr += `Number of students in SWE: ${cacheData[2].length}. List: ${cacheData[2].join(', ')}`;
 
     res.end(formatStr);
   } else {
@@ -51,6 +51,6 @@ const app = http.createServer((req, res) => {
   }
 });
 
-app.listen(1245);
-
 module.exports = app;
+
+app.listen(1245);

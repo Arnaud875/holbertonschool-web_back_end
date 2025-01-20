@@ -2,6 +2,7 @@ const express = require('express');
 const { existsSync, readFileSync } = require('fs');
 
 const app = express();
+module.exports = app;
 
 function readCSV(filePath) {
   if (!existsSync(filePath)) return [0, [], []];
@@ -42,7 +43,7 @@ app.get('/students', (req, res) => {
   let formatStr = 'This is the list of our students\n';
   formatStr += `Number of students: ${cacheData[0]}\n`;
   formatStr += `Number of students in CS: ${cacheData[1].length}. List: ${cacheData[1].join(', ')}\n`;
-  formatStr += `Number of students in SWE: ${cacheData[2].length}. List: ${cacheData[2].join(', ')}\n`;
+  formatStr += `Number of students in SWE: ${cacheData[2].length}. List: ${cacheData[2].join(', ')}`;
 
   res.send(formatStr);
 });
@@ -52,5 +53,3 @@ app.get('/', (req, res) => {
 });
 
 app.listen(1245);
-
-module.exports = app;
