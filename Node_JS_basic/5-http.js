@@ -43,11 +43,11 @@ const app = http.createServer((req, res) => {
     let formatStr = 'This is the list of our students\n';
     formatStr += `Number of students: ${cacheData[0]}\n`;
     formatStr += `Number of students in CS: ${cacheData[1].length}. List: ${cacheData[1].join(', ')}\n`;
-    formatStr += `Number of students in SWE: ${cacheData[2].length}. List: ${cacheData[2].join(', ')}`;
+    formatStr += `Number of students in SWE: ${cacheData[2].length}. List: ${cacheData[2].join(', ')}\n`;
 
     res.end(formatStr);
   } else {
-    res.end('Hello Holberton School! ');
+    res.end('Hello Holberton School!');
   }
 });
 
